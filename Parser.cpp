@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
 
 Parser::Parser(const char* inputPath, const char* outputPath): m_files(inputPath, outputPath) 
 {
