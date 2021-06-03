@@ -5,7 +5,7 @@
 
 struct OrderBook
 {
-    std::map<std::string, std::string> currentAsks; // key -> price orders, value -> amount orders
-    std::map<std::string, std::string> currentBids; // key -> price orders, value -> amount orders
+    std::map<double, int> currentAsks; // key -> price order, value -> amount orders
+    std::map<double, int> currentBids; // key -> price order, value -> amount orders
     std::string currentTime;
 };
