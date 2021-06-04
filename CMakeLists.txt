@@ -12,13 +12,11 @@ include("${CMAKE_SOURCE_DIR}/rapidJson/rapidjson.cmake")
 include_directories(${RAPIDJSON_INCLUDE_DIR})
 
 set(SOURCES
-	Files.cpp
 	ParserToVector.cpp
 	WriterFromVector.cpp
 	)
 	
 set(HEADERS
-	Files.h
 	OrderBook.h
 	ParserToVector.h
 	WriterFromVector.h

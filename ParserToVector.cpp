@@ -121,21 +121,8 @@ bool ParserToVector::parse()
                         return 0;
                     }
 
-                    // Checking number of ask orders for zero value
-                    if (ask[1].GetInt() != 0)
-                        m_vecLevelUpdates[limitOrderBooksCounter].currentAsks[ask[0].GetDouble()] = ask[1].GetInt();
-                    else
-                        m_vecLevelUpdates[limitOrderBooksCounter].currentAsks.erase(ask[0].GetDouble());
+                    m_vecLevelUpdates[limitOrderBooksCounter].currentAsks[ask[0].GetDouble()] = ask[1].GetInt();
                 }
-
-                //// Print current ASKS limit order book
-                //for (const auto& pair : m_limitOrderBook.currentAsks)
-                //{
-                //    std::cout << std::fixed << std::setprecision(2) << pair.first << " : " << pair.second << std::endl;
-                //}
-
-                //std::cout << std::endl;
-                //std::cout << std::endl;
 
                 ///////////////////////////////////////////////////////////////////////////////
                 ///////////////////////////// Current level bids //////////////////////////////
@@ -176,21 +163,8 @@ bool ParserToVector::parse()
                         return 0;
                     }
 
-                    // Checking number of bid orders for zero value
-                    if (bid[1].GetInt() != 0)
-                        m_vecLevelUpdates[limitOrderBooksCounter].currentBids[bid[0].GetDouble()] = bid[1].GetInt();
-                    else
-                        m_vecLevelUpdates[limitOrderBooksCounter].currentBids.erase(bid[0].GetDouble());
+                    m_vecLevelUpdates[limitOrderBooksCounter].currentBids[bid[0].GetDouble()] = bid[1].GetInt();
                 }
-
-                //// Print current BIDS limit order book
-                //for (const auto& pair : m_limitOrderBook.currentBids)
-                //{
-                //    std::cout << std::fixed << std::setprecision(2) << pair.first << " : " << pair.second << std::endl;
-                //}
-
-                //std::cout << std::endl;
-                //std::cout << std::endl;
 
                 ++limitOrderBooksCounter;
             }

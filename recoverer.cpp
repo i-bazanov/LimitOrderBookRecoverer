@@ -7,6 +7,7 @@
 int main() 
 {
     std::cout << "Recoverer is running ..." << std::endl;
+    std::cout << std::endl;
     clock_t start, end;
 
     {
@@ -28,6 +29,12 @@ int main()
 
         end = clock();
         std::cout << "Writing from vector run time = " << (end - start) / 1000 << " sec" << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    {
+
     }
 
     return 0;

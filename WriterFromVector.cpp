@@ -38,12 +38,20 @@ bool WriterFromVector::write(const std::vector<OrderBook>& m_vecLevelUpdates)
 
             for (const auto& ask : m_vecLevelUpdates[i].currentAsks)
             {
-                m_currentOrderBook.currentAsks[ask.first] = ask.second;
+                // Checking number of ask orders for zero value
+                if (ask.second != 0)
+                    m_currentOrderBook.currentAsks[ask.first] = ask.second;
+                else
+                    m_currentOrderBook.currentAsks.erase(ask.first);
             }
 
             for (const auto& bid : m_vecLevelUpdates[i].currentBids)
             {
-                m_currentOrderBook.currentBids[bid.first] = bid.second;
+                // Checking number of bid orders for zero value
+                if(bid.second != 0)
+                    m_currentOrderBook.currentBids[bid.first] = bid.second;
+                else
+                    m_currentOrderBook.currentBids.erase(bid.first);
             }
 
             writeCurrentOrderBook();
