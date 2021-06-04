@@ -1,6 +1,9 @@
 ﻿#include "ParserToVector.h"
 #include "WriterFromVector.h"
 
+#include "ParserToHashTable.h"
+#include "WriterFromHashTable.h"
+
 #include <iostream>
 #include <ctime>
 
@@ -24,7 +27,7 @@ int main()
         start = clock();
         WriterFromVector writer;
 
-        if (!writer.write(parser.getVecLevelUpdates()))
+        if (!writer.write(parser.getLevelUpdates()))
             return 0;
 
         end = clock();
@@ -34,7 +37,24 @@ int main()
     std::cout << std::endl;
 
     {
+        start = clock();
+        ParserToHashTable parser("..\\huobi_dm_depth.log");
 
+        if (!parser.parse())
+            return 0;
+
+        end = clock();
+        std::cout << "Parsing to hash table run time = " << (end - start) / 1000 << " sec" << std::endl;
+
+
+        start = clock();
+        WriterFromHashTable writer;
+
+        if (!writer.write(parser.getLevelUpdates()))
+            return 0;
+
+        end = clock();
+        std::cout << "Writing from hash table run time = " << (end - start) / 1000 << " sec" << std::endl;
     }
 
     return 0;

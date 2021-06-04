@@ -8,11 +8,11 @@
 class WriterFromVector
 {
 public:
-	WriterFromVector(const char* outputPath = "..\\results.txt");
+	WriterFromVector(const char* outputPath = "..\\resultsVector.txt");
 
 	~WriterFromVector();
 
-	bool write(const std::vector<OrderBook>& m_vecLevelUpdates);
+	bool write(const std::vector<OrderBook>& m_LevelUpdates);
 
 private:
 	// Methods

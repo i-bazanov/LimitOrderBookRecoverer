@@ -14,11 +14,11 @@ public:
 
 	bool parse();
 
-	const std::vector<OrderBook>& getVecLevelUpdates() const;
+	const std::vector<OrderBook>& getLevelUpdates() const;
 
 private:
-    // members
+    // Members
 	const char* m_inputPath;
 	std::ifstream m_input;
-	std::vector<OrderBook> m_vecLevelUpdates; // zero element -> zero limit order book, other elements -> level updates
+	std::vector<OrderBook> m_LevelUpdates; // zero element -> zero limit order book, other elements -> level updates
 };

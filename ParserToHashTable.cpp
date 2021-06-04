@@ -1,43 +1,26 @@
-﻿#include "ParserToVector.h"
+﻿#include "ParserToHashTable.h"
 
 #include <string>
 #include <iostream>
-#include <vector>
+#include <unordered_map>
 #include <fstream>
 
 #include "rapidjson/document.h"
 
-ParserToVector::ParserToVector(const char* inputPath)
-    : m_inputPath(inputPath),
-      m_input(inputPath)
+ParserToHashTable::ParserToHashTable(const char* inputPath)
+    : m_input(inputPath)
 {}
 
-ParserToVector::~ParserToVector() 
+ParserToHashTable::~ParserToHashTable()
 {
     m_input.close();
 }
 
-bool ParserToVector::parse()
+bool ParserToHashTable::parse()
 {
     if (m_input.is_open())
     {
         std::string currentLevel;
-
-        size_t numberLevelUpdate = 0;
-
-        while (getline(m_input, currentLevel))
-        {
-            // Ping check 
-            if (currentLevel.find("ping") != -1)
-                continue;
-
-            ++numberLevelUpdate;
-        }
-        m_LevelUpdates.resize(numberLevelUpdate);
-
-        // For second file reading
-        m_input.close();
-        m_input.open(m_inputPath);
 
         if(m_input.is_open())
         {
@@ -184,7 +167,7 @@ bool ParserToVector::parse()
     return 1;
 }
 
-const std::vector<OrderBook>& ParserToVector::getLevelUpdates() const
+const std::unordered_map<int, OrderBook>& ParserToHashTable::getLevelUpdates() const
 {
     return m_LevelUpdates;
 }
