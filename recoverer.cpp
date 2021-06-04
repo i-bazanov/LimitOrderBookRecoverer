@@ -21,7 +21,7 @@ int main()
             return 0;
 
         end = clock();
-        std::cout << "Parsing to vector run time = " << (end - start) / 1000 << " sec" << std::endl;
+        std::cout << "Parsing to vector run time = " << (end - start) << " msec" << std::endl;
 
 
         start = clock();
@@ -31,7 +31,7 @@ int main()
             return 0;
 
         end = clock();
-        std::cout << "Writing from vector run time = " << (end - start) / 1000 << " sec" << std::endl;
+        std::cout << "Writing from vector run time = " << (end - start) << " msec" << std::endl;
     }
 
     std::cout << std::endl;
@@ -44,7 +44,7 @@ int main()
             return 0;
 
         end = clock();
-        std::cout << "Parsing to hash table run time = " << (end - start) / 1000 << " sec" << std::endl;
+        std::cout << "Parsing to hash table run time = " << (end - start) << " msec" << std::endl;
 
 
         start = clock();
@@ -54,7 +54,7 @@ int main()
             return 0;
 
         end = clock();
-        std::cout << "Writing from hash table run time = " << (end - start) / 1000 << " sec" << std::endl;
+        std::cout << "Writing from hash table run time = " << (end - start) << " msec" << std::endl;
     }
 
     return 0;
