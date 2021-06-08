@@ -2,6 +2,9 @@
 
 #include "Files.h"
 #include "OrderBook.h"
+#include "UpdateTime.h"
+
+#define FormatOrderBook 0 // 1 -> tree, 0 -> hash table
 
 class Parser
 {
@@ -10,11 +13,25 @@ public:
 
 	~Parser();
 
+	long long getAverageOrderBookUpdateTime() const;
+
 private:
 	// methods
-	void parse();
+	int sizeFileCalculate();
+	void fullReadFile();
+	void updateAllOrderBooks();
+	void inputBestValue();
+	void fastParse();
+	//void parse();
 
     // members
 	Files m_files;
-	OrderBook m_limitOrderBook;
+	std::string m_fileString;
+	UpdateTime m_updateTime;
+
+#if FormatOrderBook
+	OrderBook_tree m_limitOrderBook;
+#else
+	OrderBook_hashTable m_limitOrderBook;
+#endif
 };

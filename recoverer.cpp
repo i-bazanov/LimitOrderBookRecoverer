@@ -1,19 +1,24 @@
 ﻿#include "Parser.h"
 
 #include <iostream>
-#include <ctime>
 
-int main() 
+int main(int argc, char* argv[])
 {
     std::cout << "Recoverer is running ..." << std::endl;
 
-    clock_t start = clock();
+    long long sumAllAverageOrderBookUpdateTime(0);
+    size_t launchesNumber = 100;
 
-    Parser parser("..\\huobi_dm_depth.log");
+    for (size_t i = 0; i < launchesNumber; ++i)
+    {
+        Parser parser("..\\huobi_dm_depth.log");
 
-    clock_t end = clock();
+        sumAllAverageOrderBookUpdateTime += parser.getAverageOrderBookUpdateTime();
 
-    std::cout << "Run time = " << (end - start) / 1000 << " sec" << std::endl;
+        std::cout << '\r' << i << " %";
+    }
+    std::cout << '\r' << "100 %";
+    std::cout << '\r' << "Average value of average order book update time on all dataset = " << sumAllAverageOrderBookUpdateTime / launchesNumber << " nsec" << std::endl;
 
     return 0;
 }

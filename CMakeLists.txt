@@ -14,12 +14,14 @@ include_directories(${RAPIDJSON_INCLUDE_DIR})
 set(SOURCES
 	Files.cpp
 	Parser.cpp
+	UpdateTime.cpp
 	)
 	
 set(HEADERS
 	Files.h
 	OrderBook.h
 	Parser.h
+	UpdateTime.h
 	)
 
 add_executable(${PROJECT_NAME} recoverer.cpp)
