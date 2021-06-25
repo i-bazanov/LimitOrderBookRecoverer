@@ -1,5 +1,5 @@
 # LimitOrderBookRecoverer
-Limit order book recoverer (test task for c++ programmer in a crypto startup)
+Limit order book recoverer
 
 For build:
 
